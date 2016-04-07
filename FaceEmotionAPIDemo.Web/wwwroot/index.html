@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <div class="row">
-            Hello world!
+                <div id="webcam"></div>
         </div>
     </div>
     
@@ -18,5 +18,48 @@
     <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
     <script src="/lib/webcamjs/webcam.js"></script>
     <script src="/js/site.js" asp-file-version="true"></script>
+    <script language="javascript">
+        $(function() {
+            
+            var apiKey = "627ff3a3a49440ee8db2b83b4e266679";
+
+            Webcam.set({
+                width: 640,
+                height: 480,
+                image_format: 'jpeg',
+                jpeg_quality: 90
+		    });
+	
+    	    Webcam.attach( '#webcam' );
+            
+            // setInterval(function() { 
+            //     getEmotionsFromCam() 
+            // }, 3000);
+            
+            // function getEmotionsFromCam() {
+			//     Webcam.snap(function(stream) {
+            //         emotionService.getFaceEmotionsByStream(stream, apiKey, function(result) {
+            //             var html = '';
+                        
+            //             $.each(result, function(index, value){
+            //                 html += '<div class="face"><p class="emoticon">'+ emoticonProvider.fromScores(value.scores) +'</p>' + 
+            //                 '<ul class="face-data">' +
+            //                 '<li>Anger: ' + value.scores.anger + '</li>' +
+            //                 '<li>Happiness: ' + value.scores.happiness + '</li>' +
+            //                 '<li>Sadness: ' + value.scores.sadness + '</li>' +
+            //                 '<li>Neutral: ' + value.scores.neutral + '</li>' +
+            //                 '<li>Disgust: ' + value.scores.disgust + '</li>' +
+            //                 '<li>Contempt: ' + value.scores.contempt + '</li>' +  
+            //                 '<li>Surprise: ' + value.scores.surprise + '</li>' +
+            //                 '</ul></div>';
+            //             });
+                        
+            //             document.getElementById('emotion').innerHTML = html;    
+            //         });
+		    //     });
+            };
+            
+        });
+    </script>
 </body>
 </html>
