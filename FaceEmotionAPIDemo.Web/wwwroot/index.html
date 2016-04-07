@@ -10,7 +10,8 @@
 <body>
     <div class="container">
         <div class="row">
-                <div id="webcam"></div>
+            <div id="webcam"></div>
+            <div id="emotions"></div>
         </div>
     </div>
     
@@ -32,31 +33,31 @@
 	
     	    Webcam.attach( '#webcam' );
             
-            // setInterval(function() { 
-            //     getEmotionsFromCam() 
-            // }, 3000);
+            setInterval(function() { 
+                getEmotionsFromCam() 
+            }, 3000);
             
-            // function getEmotionsFromCam() {
-			//     Webcam.snap(function(stream) {
-            //         emotionService.getFaceEmotionsByStream(stream, apiKey, function(result) {
-            //             var html = '';
+            function getEmotionsFromCam() {
+			    Webcam.snap(function(stream) {
+                    emotionService.getFaceEmotionsByStream(stream, apiKey, function(result) {
+                        var html = '';
                         
-            //             $.each(result, function(index, value){
-            //                 html += '<div class="face"><p class="emoticon">'+ emoticonProvider.fromScores(value.scores) +'</p>' + 
-            //                 '<ul class="face-data">' +
-            //                 '<li>Anger: ' + value.scores.anger + '</li>' +
-            //                 '<li>Happiness: ' + value.scores.happiness + '</li>' +
-            //                 '<li>Sadness: ' + value.scores.sadness + '</li>' +
-            //                 '<li>Neutral: ' + value.scores.neutral + '</li>' +
-            //                 '<li>Disgust: ' + value.scores.disgust + '</li>' +
-            //                 '<li>Contempt: ' + value.scores.contempt + '</li>' +  
-            //                 '<li>Surprise: ' + value.scores.surprise + '</li>' +
-            //                 '</ul></div>';
-            //             });
+                        $.each(result, function(index, value){
+                            html += '<div class="face"><p class="emoticon">'+ emoticonProvider.fromScores(value.scores) +'</p>' + 
+                            '<ul class="face-data">' +
+                            '<li>Anger: ' + value.scores.anger + '</li>' +
+                            '<li>Happiness: ' + value.scores.happiness + '</li>' +
+                            '<li>Sadness: ' + value.scores.sadness + '</li>' +
+                            '<li>Neutral: ' + value.scores.neutral + '</li>' +
+                            '<li>Disgust: ' + value.scores.disgust + '</li>' +
+                            '<li>Contempt: ' + value.scores.contempt + '</li>' +  
+                            '<li>Surprise: ' + value.scores.surprise + '</li>' +
+                            '</ul></div>';
+                        });
                         
-            //             document.getElementById('emotion').innerHTML = html;    
-            //         });
-		    //     });
+                        document.getElementById('emotions').innerHTML = html;    
+                    });
+		        });
             };
             
         });
