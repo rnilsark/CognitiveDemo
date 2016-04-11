@@ -8,11 +8,9 @@
     <link rel="stylesheet" href="/css/site.css" />
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <div id="webcam"></div>
-            <div id="emotions"></div>
-        </div>
+    <div id="container"> 
+        <div id="webcam"></div>
+        <div id="emotions"></div>
     </div>
     
 	<script src="/lib/jquery/dist/jquery.js"></script>
@@ -43,7 +41,13 @@
                         var html = '';
                         
                         $.each(result, function(index, value){
-                            html += '<div class="face"><p class="emoticon">'+ emoticonProvider.fromScores(value.scores) +'</p>' + 
+                            html += '<div class="face" style="top:' + 
+                            value.faceRectangle.top +'px;left:' +
+                            value.faceRectangle.left + 'px;width:' + 
+                            value.faceRectangle.width + 'px;height:' + 
+                            value.faceRectangle.height + 'px;">' +
+                            '<p class="emoticon">'+ 
+                            emoticonProvider.fromScores(value.scores) +'</p>' + 
                             '<ul class="face-data">' +
                             '<li>Anger: ' + value.scores.anger + '</li>' +
                             '<li>Happiness: ' + value.scores.happiness + '</li>' +
